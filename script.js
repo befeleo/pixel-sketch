@@ -1,5 +1,6 @@
 canvas = document.querySelectorAll(".canvas")
 parent = document.querySelector('.sketch')
+btn = document.querySelector('.btn')
 
 // Hover
 canvas.forEach(e => {
@@ -9,17 +10,22 @@ canvas.forEach(e => {
 })
 
 // Size 
+let size
+btn.addEventListener('click', () => {
 
-let size = +prompt('Enter size', '')
-console.log(size)
-for (let i = 1; i <= size ** 2; i++) {
-    newCanvas = document.createElement('div')
-    canvas = ''
-    newCanvas.classList.add('canvas')
-    newCanvas.textContent = i
-    newCanvas.style.width = `${100 / size}%`
-    newCanvas.style.height = `${100 / size}%`
-    parent.style.display = 'flex'
-    parent.style.flexWrap = 'wrap'
-    parent.appendChild(newCanvas)
-}
+    size = +prompt('Enter size', '')
+    parent.innerHTML = ''
+
+    for (let i = 1; i <= size ** 2; i++) {
+        const newCanvas = document.createElement('div')
+        newCanvas.classList.add('canvas')
+        newCanvas.style.width = `${100 / size}%`
+        newCanvas.style.height = `${100 / size}%`
+
+        newCanvas.addEventListener('mouseover', () => {
+            newCanvas.style.backgroundColor = 'pink'
+        })
+
+        parent.appendChild(newCanvas)
+    }
+})

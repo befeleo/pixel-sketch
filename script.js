@@ -1,7 +1,9 @@
 sketch = document.querySelector('.sketch')
-cell = document.querySelectorAll(".cell")
 sizeDisplay = document.querySelector('.size-display')
 inputSize = document.getElementById('size')
+
+// Buttons
+gridBtn = document.getElementById('grid')
 
 
 // Default size
@@ -46,3 +48,21 @@ inputSize.addEventListener('input', () => {
         sketch.appendChild(newCell)
     }
 })
+
+
+// Grid
+
+let gridEnabled = true;
+
+gridBtn.addEventListener('click', () => {
+    const cells = document.querySelectorAll('.cell');
+    gridEnabled = !gridEnabled;
+
+    cells.forEach(cell => {
+
+        cell.style.border = gridEnabled ? '1px solid #ddd' : 'none';
+    });
+
+    // Optional: change button text to show state
+    // gridBtn.textContent = gridEnabled ? 'Grid ON' : 'Grid OFF';
+});

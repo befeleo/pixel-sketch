@@ -15,51 +15,45 @@
       <div class="aside">
         <div class="result">#ffc0cb</div>
         <div class="colors">
-          <div class="color black"></div>
-          <div class="color white"></div>
-          <div class="color red"></div>
-          <div class="color orange"></div>
-          <div class="color yellow"></div>
-          <div class="color lime"></div>
-          <div class="color green"></div>
-          <div class="color cyan"></div>
-          <div class="color blue"></div>
-          <div class="color navy"></div>
-          <div class="color purple"></div>
-          <div class="color pink"></div>
-          <div class="color brown"></div>
-          <div class="color gray"></div>
-          <div class="color silver"></div>
-          <div class="color gold"></div>
+          <div class="color" id="black"></div>
+          <div class="color" id="white"></div>
+          <div class="color" id="red"></div>
+          <div class="color" id="orange"></div>
+          <div class="color" id="yellow"></div>
+          <div class="color" id="lime"></div>
+          <div class="color" id="green"></div>
+          <div class="color" id="cyan"></div>
+          <div class="color" id="blue"></div>
+          <div class="color" id="navy"></div>
+          <div class="color" id="purple"></div>
+          <div class="color" id="pink"></div>
+          <div class="color" id="brown"></div>
+          <div class="color" id="gray"></div>
+          <div class="color" id="silver"></div>
+          <div class="color" id="gold"></div>
         </div>
 
         <div class="controls">
           <button class="btn" id="color-palette">
-            <!-- <i data-lucide="palette"></i> -->
-            Color
+            <i data-lucide="palette"></i>
           </button>
           <button class="btn" id="random-color">
-            <!-- <i data-lucide="shuffle"></i> -->
-            Random
+            <i data-lucide="shuffle"></i>
           </button>
           <button class="btn" id="erase">
-            <!-- <i data-lucide="eraser"></i> -->
-            Clear
+            <i data-lucide="eraser"></i>
           </button>
           <button class="btn" id="grid">
-            <!-- <i data-lucide="grid-2x2"></i> -->
-            Grid
+            <i data-lucide="grid-2x2"></i>
           </button>
           <button class="btn" id="clear">
-            <!-- <i data-lucide="trash-2"></i> -->
-            Trash
+            <i data-lucide="trash-2"></i>
           </button>
           <button class="btn" id="save">
-            <!-- <i data-lucide="save"></i> -->
-            Save
+            <i data-lucide="save"></i>
           </button>
         </div>
-        <div class="size-display">4 X 4</div>
+        <div class="size-display"></div>
         <div class="range">
           <input type="range" min="1" max="100" id="size" />
         </div>
@@ -69,10 +63,10 @@
       </div>
     </div>
     <script src="script.js" defer></script>
-    <!-- <script src="https://unpkg.com/lucide@latest"></script> -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- <script>
+    <script>
       lucide.createIcons();
-    </script> -->
+    </script>
   </body>
 </html>

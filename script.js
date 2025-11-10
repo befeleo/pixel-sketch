@@ -1,38 +1,49 @@
 sketch = document.querySelector('.sketch')
-sizeDisplay = document.querySelector('.size-display')
+cellSizeDisplay = document.querySelector('.size-display')
 inputSize = document.getElementById('size')
 
 // Buttons
+randomColorBtn = document.getElementById('random-color')
 gridBtn = document.getElementById('grid')
-
 
 // Default size
 const defaultSize = 16
+
+cellSizeDisplay.textContent = `${defaultSize}X${defaultSize}`
+inputSize.value = defaultSize
 
 for (let i = 1; i <= defaultSize ** 2; i++) {
     const defaults = document.createElement('div')
     defaults.classList.add('cell')
     defaults.style.width = `${100 / defaultSize}%`
     defaults.style.height = `${100 / defaultSize}%`
-    sketch.appendChild(defaults)
 
     defaults.addEventListener('mouseover', () => {
-        defaults.style.backgroundColor = 'pink'
+        if (userRandomColor)
+            defaults.style.backgroundColor = randomColorGenerate()
     })
+    sketch.appendChild(defaults)
 }
 
+
+
 // Random Color
-const randomColor = () => {
+const randomColorGenerate = () => {
     const r = Math.floor(Math.random() * 256)
     const g = Math.floor(Math.random() * 256)
     const b = Math.floor(Math.random() * 256)
     return `rgb(${r}, ${g}, ${b})`
 }
 
+let userRandomColor = false
+randomColorBtn.addEventListener('click', () => {
+    userRandomColor = !userRandomColor
+})
+
 // Modify Size 
 
-inputSize.addEventListener('input', () => {
-    sizeDisplay.textContent = `${inputSize.value}X${inputSize.value}`
+const createCell = () => {
+    cellSizeDisplay.textContent = `${inputSize.value}X${inputSize.value}`
     sketch.innerHTML = ''
 
     let size = inputSize.value
@@ -43,15 +54,17 @@ inputSize.addEventListener('input', () => {
         newCell.style.height = `${100 / size}%`
 
         newCell.addEventListener('mouseover', () => {
-            newCell.style.backgroundColor = randomColor()
+            if (userRandomColor)
+                newCell.style.backgroundColor = randomColorGenerate()
         })
         sketch.appendChild(newCell)
-    }
-})
 
+    }
+}
+
+inputSize.addEventListener('input', () => createCell())
 
 // Grid
-
 let gridEnabled = true;
 
 gridBtn.addEventListener('click', () => {
@@ -63,6 +76,5 @@ gridBtn.addEventListener('click', () => {
         cell.style.border = gridEnabled ? '1px solid #ddd' : 'none';
     });
 
-    // Optional: change button text to show state
     // gridBtn.textContent = gridEnabled ? 'Grid ON' : 'Grid OFF';
 });

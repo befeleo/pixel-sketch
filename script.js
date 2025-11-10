@@ -16,12 +16,14 @@ const randomColor = () => {
 }
 
 // Size 
-let size
-btn.addEventListener('click', () => {
+sizeDisplay = document.querySelector('.size-display')
+inputSize = document.querySelector('#size')
 
-    size = +prompt('Enter size', '')
+inputSize.addEventListener('input', () => {
+    sizeDisplay.textContent = `${inputSize.value}X${inputSize.value}`
     parent.innerHTML = ''
 
+    let size = inputSize.value
     for (let i = 1; i <= size ** 2; i++) {
         const newCanvas = document.createElement('div')
         newCanvas.classList.add('canvas')
@@ -29,18 +31,12 @@ btn.addEventListener('click', () => {
         newCanvas.style.height = `${100 / size}%`
 
         newCanvas.addEventListener('mouseover', () => {
-            newCanvas.style.backgroundColor = '#ffc0cb'
+            newCanvas.style.backgroundColor = randomColor()
         })
 
         parent.appendChild(newCanvas)
     }
-})
-
-
-input = document.querySelector('#size')
-size = document.querySelector('.size')
-
-input.addEventListener('input', () => {
-    size.textContent = input.value
 
 })
+
+

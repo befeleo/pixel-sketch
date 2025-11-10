@@ -1,13 +1,17 @@
-canvas = document.querySelectorAll(".canvas")
-parent = document.querySelector('.sketch')
-btn = document.querySelector('.btn')
+cell = document.querySelectorAll(".cell")
+sketch = document.querySelector('.sketch')
+sizeDisplay = document.querySelector('.size-display')
+inputSize = document.getElementById('size')
+
 
 // Hover
-canvas.forEach(e => {
+cell.forEach(e => {
     e.addEventListener(('mouseover'), () => {
         e.style.backgroundColor = 'pink'
     })
 })
+
+// Random Color
 const randomColor = () => {
     const r = Math.floor(Math.random() * 256)
     const g = Math.floor(Math.random() * 256)
@@ -16,27 +20,23 @@ const randomColor = () => {
 }
 
 // Size 
-sizeDisplay = document.querySelector('.size-display')
-inputSize = document.querySelector('#size')
 
 inputSize.addEventListener('input', () => {
     sizeDisplay.textContent = `${inputSize.value}X${inputSize.value}`
-    parent.innerHTML = ''
+    sketch.innerHTML = ''
 
     let size = inputSize.value
     for (let i = 1; i <= size ** 2; i++) {
-        const newCanvas = document.createElement('div')
-        newCanvas.classList.add('canvas')
-        newCanvas.style.width = `${100 / size}%`
-        newCanvas.style.height = `${100 / size}%`
+        const newCell = document.createElement('div')
+        newCell.classList.add('cell')
+        newCell.style.width = `${100 / size}%`
+        newCell.style.height = `${100 / size}%`
 
-        newCanvas.addEventListener('mouseover', () => {
-            newCanvas.style.backgroundColor = randomColor()
+        newCell.addEventListener('mouseover', () => {
+            newCell.style.backgroundColor = randomColor()
         })
-
-        parent.appendChild(newCanvas)
+        sketch.appendChild(newCell)
     }
-
 })
 
 

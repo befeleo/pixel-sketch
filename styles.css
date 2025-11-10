@@ -111,7 +111,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-.canvas {
+.cell {
   /* background-color: red; */
   width: 25%;
   height: 25%;

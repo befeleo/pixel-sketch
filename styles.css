@@ -1,80 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
-/* 1. Use a more-intuitive box-sizing model */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"); */
 
-/* 2. Remove default margin */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
-  }
-}
-
-body {
-  /* 4. Add accessible line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-}
-
-/* 6. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* 7. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* 8. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
-
-/*
-  10. Create a root stacking context
-*/
-#root,
-#__next {
-  isolation: isolate;
 }
 
 body {
@@ -82,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: "Pixelify Sans", sans-serif;
+  /* font-family: "Pixelify Sans", sans-serif; */
   /* background-color: grey; */
 }
 
@@ -104,7 +33,7 @@ h1 {
   font-size: 54px;
 }
 .sketch {
-  /* border: 1px solid red; */
+  border: 1px solid;
   width: 550px;
   height: 550px;
   display: flex;
@@ -112,10 +41,9 @@ h1 {
 }
 
 .cell {
-  /* background-color: red; */
   width: 25%;
   height: 25%;
-  border: 1px solid;
+  /* border: 1px solid; */
 }
 
 .aside {
@@ -138,7 +66,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  /* border: 2px solid; */
+  border: 1px solid;
 }
 
 .color {
@@ -147,52 +75,52 @@ h1 {
   cursor: pointer;
 }
 
-.black {
+#black {
   background: #000;
 }
-.white {
+#white {
   background: #fff;
 }
-.red {
+#red {
   background: #ff0000;
 }
-.orange {
+#orange {
   background: #ffa500;
 }
-.yellow {
+#yellow {
   background: #ffff00;
 }
-.lime {
+#lime {
   background: #00ff00;
 }
-.green {
+#green {
   background: #008000;
 }
-.cyan {
+#cyan {
   background: #00ffff;
 }
-.blue {
+#blue {
   background: #0000ff;
 }
-.navy {
+#navy {
   background: #000080;
 }
-.purple {
+#purple {
   background: #800080;
 }
-.pink {
+#pink {
   background: #ff69b4;
 }
-.brown {
+#brown {
   background: #a52a2a;
 }
-.gray {
+#gray {
   background: #808080;
 }
-.silver {
+#silver {
   background: #c0c0c0;
 }
-.gold {
+#gold {
   background: #ffd700;
 }
 
@@ -227,8 +155,4 @@ button {
   justify-content: center;
   text-align: center;
   text-decoration: none;
-}
-
-i {
-  color: red;
 }

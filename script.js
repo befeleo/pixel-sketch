@@ -1,7 +1,7 @@
 const sketch = document.querySelector('.sketch')
 const inputSize = document.getElementById('size')
-const sizeDisplay = document.querySelector('.size-displayColor')
-const colorDisplay = document.querySelector('.color-displayColor')
+const sizeDisplay = document.querySelector('.size-display')
+const colorDisplay = document.querySelector('.color-display')
 // colorDisplay.textContent = 'black'
 
 // Buttons
@@ -51,16 +51,43 @@ const createCell = () => {
 const getColorPalette = (color) => {
     const cells = document.querySelectorAll('.cell')
     cells.forEach(cell => {
+        displayColor(color)
         cell.addEventListener('mouseover', () => {
             if (colorPaletteEnabled) {
                 cell.style.backgroundColor = `${color}`
-                displayColor(color)
             }
         })
     })
     randomColorEnabled = false
     eraseEnabled = false
 }
+
+// Add color from input
+const colorInput = () => {
+    colorPaletteEnabled = true
+    randomColorEnabled = false
+    eraseEnabled = false
+
+    const colorPicker = document.createElement('input')
+    colorPicker.type = 'color'
+    colorPicker.style.display = 'none'
+    document.body.appendChild(colorPicker)
+
+    colorPicker.addEventListener('input', (color) => {
+        const selectedColor = color.target.value
+        displayColor(selectedColor)
+        const cells = document.querySelectorAll('.cell')
+        cells.forEach(cell => {
+            cell.addEventListener('mouseover', () => {
+                if (colorPaletteEnabled)
+                    cell.style.backgroundColor = selectedColor
+            })
+        })
+    })
+    colorPicker.click()
+
+}
+
 
 // Add random Color
 const randomColorGenerate = () => {
@@ -109,6 +136,9 @@ const clearGrid = () => {
     colorDisplay.innerHTML = ''
     const cells = document.querySelectorAll('.cell')
     cells.forEach(cell => cell.style.backgroundColor = '#fff')
+    colorPaletteEnabled = false
+    randomColorEnabled = false
+    eraseEnabled = false()
 }
 
 // Erase
@@ -135,9 +165,11 @@ colors.forEach(color => {
         getColorPalette(colorId)
     })
 })
+
+colorPaletteBtn.addEventListener('click', () => colorInput())
 randomColorBtn.addEventListener('click', () => getRandomColor())
 eraseBtn.addEventListener('click', () => eraseGrid())
 gridBtn.addEventListener('click', () => displayGrid())
 clearBtn.addEventListener('click', () => clearGrid())
 inputSize.addEventListener('input', () => createCell())
-colorPaletteBtn.addEventListener('click', () => colorInput())
+

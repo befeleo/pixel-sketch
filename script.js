@@ -48,6 +48,17 @@ const createCell = () => {
     }
 }
 
+// Update the button appearance
+const updateButtonStates = () => {
+    randomColorBtn.style.backgroundColor = randomColorEnabled ? '#000' : '#fff'
+    randomColorBtn.style.color = randomColorEnabled ? '#fff' : '#000'
+
+    eraseBtn.style.backgroundColor = eraseEnabled ? '#000' : '#fff'
+    eraseBtn.style.color = eraseEnabled ? '#fff' : '#000'
+
+    gridBtn.style.backgroundColor = gridEnabled ? '#000' : '#fff'
+    gridBtn.style.color = gridEnabled ? '#fff' : '#000'
+}
 // Add default color 
 const getColorPalette = (color) => {
     const cells = document.querySelectorAll('.cell')
@@ -123,6 +134,8 @@ const getRandomColor = () => {
     colorDisplay.appendChild(p)
     colorPaletteEnabled = false
     eraseEnabled = false
+
+    updateButtonStates()
 }
 
 // Display Grid
@@ -130,6 +143,8 @@ const displayGrid = () => {
     gridEnabled = !gridEnabled
     const cells = document.querySelectorAll('.cell')
     cells.forEach(cell => cell.style.border = gridEnabled ? '1px solid #ddd' : 'none')
+
+    updateButtonStates()
 }
 
 // Clear
@@ -139,7 +154,9 @@ const clearGrid = () => {
     cells.forEach(cell => cell.style.backgroundColor = '#fff')
     colorPaletteEnabled = false
     randomColorEnabled = false
-    eraseEnabled = false()
+    eraseEnabled = false
+
+    updateButtonStates()
 }
 
 // Erase
@@ -155,6 +172,8 @@ const eraseGrid = () => {
     })
     colorPaletteEnabled = false
     randomColorEnabled = false
+
+    updateButtonStates()
 }
 
 // Save
